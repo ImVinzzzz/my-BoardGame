@@ -107,7 +107,7 @@
           </div>
 
           <div>
-            <label class="block text-sm font-semibold mb-1" for="synopsis">Sinossi</label>
+            <label class="block text-sm font-semibold mb-1" for="synopsis">Altro</label>
             <textarea id="synopsis" rows="3" class="w-full rounded-lg bg-[#081320] border border-[#23405C] px-3 py-2 focus:outline-none focus:border-[#FF7A29]"></textarea>
           </div>
 
@@ -251,7 +251,7 @@
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wide text-[#6B829B]">Materiale #${rowId}</span>
             <button type="button" onclick="removeDownloadRow(${rowId})" class="text-xs text-[#6B829B] hover:text-[#FF7A29]">
-              <i class="fa-solid fa-trash" aria-hidden="true"></i> Rimuovi
+              <i class="fa-solid fa-trash-can" aria-hidden="true"></i> Rimuovi
             </button>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -260,7 +260,10 @@
           </div>
           <input data-field="description" type="text" placeholder="Descrizione (es. Manuale ufficiale in italiano, 24 pagine)" class="w-full rounded-lg bg-[#13263D] border border-[#23405C] px-3 py-2 text-sm focus:outline-none focus:border-[#FF7A29]" />
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <input data-field="icon" type="text" list="icon-suggestions" placeholder="Icona FontAwesome" value="${defaults?.icon ?? 'fa-solid fa-file'}" class="w-full rounded-lg bg-[#13263D] border border-[#23405C] px-3 py-2 text-sm focus:outline-none focus:border-[#FF7A29]" />
+	    <div>
+		<label class="block text-xs font-semibold mb-1 text-[#6B829B]">Icona <span class="font-normal">(seleziona qualla più adeguata)</span></label>
+            	<input data-field="icon" type="text" list="icon-suggestions" placeholder="Icona FontAwesome" value="${defaults?.icon ?? 'fa-solid fa-file'}" class="w-full rounded-lg bg-[#13263D] border border-[#23405C] px-3 py-2 text-sm focus:outline-none focus:border-[#FF7A29]" />
+	    </div>
             <div>
               <label class="block text-xs font-semibold mb-1 text-[#6B829B]">URL file <span class="font-normal">(generato dallo slug, modificabile)</span></label>
               <input data-field="fileUrl" type="text" placeholder="/pdfs/slug_1.pdf" class="w-full rounded-lg bg-[#13263D] border border-[#23405C] px-3 py-2 text-sm focus:outline-none focus:border-[#FF7A29]" />
