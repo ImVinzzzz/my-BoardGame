@@ -114,7 +114,7 @@ export default function BoardGameDetail(): ReactElement {
             <p className="mt-3 leading-relaxed text-[#C3D1DE]">{game.description}</p>
             {game.synopsis && (
               <>
-                <h2 className="mt-8 font-display text-xl font-semibold text-[#EAF0F6]">Sinossi</h2>
+                <h2 className="mt-8 font-display text-xl font-semibold text-[#EAF0F6]">Altro</h2>
                 <p className="mt-3 leading-relaxed text-[#C3D1DE]">{game.synopsis}</p>
               </>
             )}
@@ -138,7 +138,7 @@ export default function BoardGameDetail(): ReactElement {
         {game.notes && (
           <section className="mt-10 rounded-xl border border-dashed border-[#FF7A29]/40 bg-[#13263D] p-5">
             <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
-              <i className="fa-solid fa-feather-pointed text-[#FF7A29]" aria-hidden="true" />
+              <i className="fa-solid fa-note-sticky text-[#FF7A29]" aria-hidden="true" />
               Note
             </h2>
             <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.notes}</p>
