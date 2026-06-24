@@ -9,6 +9,26 @@ import type { BoardGame } from '../types';
  */
 export const boardgames: BoardGame[] = [
   {
+  id: "st-lower-decks",
+  slug: "st-lower-decks",
+  title: "Star Trek: Lower Decks - Buffer Time",
+  subtitle: "Lavorare insieme per completare i compiti mentre lavoriamo anche in alcuni... tempo di cuscinetto.",
+  coverImageUrl: "/images/st-lower-decks.jpg",
+  description: "Esplorare strani mondi nuovi, dicevano... ma è difficile apprezzare le meraviglie della Galassia quando si è bloccati a lubrificare i turbolift. Ma ehi, non è che il Capitano Freeman sappia quanto tempo ci vogliono davvero questi incarichi...",
+  type: "Cooperativo",
+  genres: ["Fantasy", "Star Trek", "Carte", "Cooperativo", "Party Game"],
+  rating: 4,
+  synopsis: "In questo gioco di carte che spinge la fortuna, da 2 a 6 giocatori lavorano insieme per completare i loro compiti, trovandosi anche il tempo per un meritato riposo e rilassamento. Riesci a infilare abbastanza divertimento nel tuo turno di turno prima che l'equipaggio del ponte capisca cosa sta succedendo?",
+  playerCount: "2-6 giocatori",
+  duration: "20-40 minuti",
+  ageRange: "14+",
+  notes: "Dipendenza linguistica: testo di gioco moderato; serve un foglio illustrativo.",
+  favorite: true,
+  played: true,
+  officialUrl: "https://modiphius.net/products/star-trek-lower-decks-buffer-time-the-card-game",
+  downloads: [],
+},
+    {
     id: 'sentieri-di-latta',
     slug: 'sentieri-di-latta',
     title: 'Sentieri di Latta',
