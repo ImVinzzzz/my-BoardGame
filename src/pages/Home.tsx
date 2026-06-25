@@ -1,11 +1,11 @@
-import { useMemo, useState } from 'react';
-import type { ReactElement } from 'react';
-import { boardgames } from '../data/boardgame';
-import { GAME_TYPES } from '../types';
-import type { GameType } from '../types';
-import BoardGameCard from '../components/BoardGameCard';
-import FilterBar from '../components/FilterBar';
-import type { PlayedFilter } from '../components/FilterBar';
+import { useMemo, useState } from "react";
+import type { ReactElement } from "react";
+import { boardgames } from "../data/boardgame";
+import { GAME_TYPES } from "../types";
+import type { GameType } from "../types";
+import BoardGameCard from "../components/BoardGameCard";
+import FilterBar from "../components/FilterBar";
+import { type PlayedFilter, type FavoriteFilter } from "../components/FilterBar";
 
 /**
  * Pagina principale: intestazione dell'archivio + filtri + griglia
@@ -18,7 +18,9 @@ export default function Home(): ReactElement {
   const [selectedType, setSelectedType] = useState<GameType | null>(null);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [minRating, setMinRating] = useState(0);
-  const [playedFilter, setPlayedFilter] = useState<PlayedFilter>('all');
+  const [playedFilter, setPlayedFilter] = useState<PlayedFilter>("all");
+  const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
 
   // Generi derivati dai dati: nessuna lista da mantenere manualmente
   // quando aggiungi un nuovo gioco.
@@ -37,14 +39,18 @@ export default function Home(): ReactElement {
         selectedGenres.some((genre) => game.genres.includes(genre));
       const matchesRating = minRating === 0 || game.rating >= minRating;
       const matchesPlayed =
-        playedFilter === 'all' ||
-        (playedFilter === 'played' && game.played) ||
-        (playedFilter === 'unplayed' && !game.played);
-      return matchesType && matchesGenres && matchesRating && matchesPlayed;
+        playedFilter === "all" ||
+        (playedFilter === "played" && game.played) ||
+        (playedFilter === "unplayed" && !game.played);
+      const matchesFavorite =
+        favoriteFilter === "all" ||
+        (favoriteFilter === "favorite" && game.favorite) ||
+        (favoriteFilter === "non_favorite" && !game.favorite);
+      return matchesType && matchesGenres && matchesRating && matchesPlayed && matchesFavorite;
     });
 
     return [...list].sort((a, b) => a.title.localeCompare(b.title));
-  }, [selectedType, selectedGenres, minRating, playedFilter]);
+  }, [selectedType, selectedGenres, minRating, playedFilter, favoriteFilter]);
 
   function toggleGenre(genre: string): void {
     setSelectedGenres((prev) =>
@@ -56,7 +62,8 @@ export default function Home(): ReactElement {
     setSelectedType(null);
     setSelectedGenres([]);
     setMinRating(0);
-    setPlayedFilter('all');
+    setPlayedFilter("all");
+    setFavoriteFilter("all");
   }
 
   return (
@@ -83,20 +90,39 @@ export default function Home(): ReactElement {
       <main className="mx-auto max-w-6xl px-6 py-10 sm:py-14">
         {/* Filtri: mostrati solo se c'è almeno un gioco in archivio */}
         {boardgames.length > 0 && (
-          <div className="mb-8">
-            <FilterBar
-              types={GAME_TYPES}
-              genres={genres}
-              selectedType={selectedType}
-              selectedGenres={selectedGenres}
-              minRating={minRating}
-              playedFilter={playedFilter}
-              onTypeChange={setSelectedType}
-              onGenreToggle={toggleGenre}
-              onMinRatingChange={setMinRating}
-              onPlayedFilterChange={setPlayedFilter}
-              onReset={resetFilters}
-            />
+          <div className="mb-8 flex flex-col gap-4">
+            <div className="flex justify-between items-center">
+              <button
+                type="button"
+                onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50"
+              >
+                <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
+                <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
+                <i
+                  className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+
+            {isFiltersOpen && (
+              <FilterBar
+                types={GAME_TYPES}
+                genres={genres}
+                selectedType={selectedType}
+                selectedGenres={selectedGenres}
+                minRating={minRating}
+                playedFilter={playedFilter}
+                favoriteFilter={favoriteFilter}
+                onTypeChange={setSelectedType}
+                onGenreToggle={toggleGenre}
+                onMinRatingChange={setMinRating}
+                onPlayedFilterChange={setPlayedFilter}
+                onFavoriteFilterChange={setFavoriteFilter}
+                onReset={resetFilters}
+              />
+            )}
           </div>
         )}
 
