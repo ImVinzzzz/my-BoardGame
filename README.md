@@ -28,25 +28,25 @@ Un'applicazione web amatoriale per catalogare la propria collezione di giochi da
 
 Assicurarsi di aver installato Node.js sul proprio sistema.
 
-### 1. Installare le dipendenze
+#### 1. Installare le dipendenze
 Eseguire il comando seguente nella root del progetto:
 ```bash
 npm install
 ```
 
-### 2. Avviare in modalità sviluppo
+#### 2. Avviare in modalità sviluppo
 Per lanciare l'applicazione localmente con hot-reload:
 ```bash
 npm run dev
 ```
 
-### 3. Compilare per la produzione
+#### 3. Compilare per la produzione
 Per generare la build ottimizzata pronta per il deployment:
 ```bash
 npm run build
 ```
 
-### 4. Avviare la build di produzione localmente
+#### 4. Avviare la build di produzione localmente
 Per testare localmente la versione compilata:
 ```bash
 npm run preview
