@@ -120,7 +120,7 @@ export default function FilterBar({
               className={chipClasses(selectedType === type)}
               aria-pressed={selectedType === type}
             >
-              <i className="fa-solid fa-dice text-[0.7rem]" aria-hidden="true" />
+              <i className="fa-solid fa-cube text-[0.7rem]" aria-hidden="true" />
               {type}
             </button>
           ))}
