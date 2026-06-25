@@ -21,6 +21,7 @@ export default function Home(): ReactElement {
   const [playedFilter, setPlayedFilter] = useState<PlayedFilter>("all");
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Generi derivati dai dati: nessuna lista da mantenere manualmente
   // quando aggiungi un nuovo gioco.
@@ -31,6 +32,9 @@ export default function Home(): ReactElement {
 
   const filteredGames = useMemo(() => {
     const list = boardgames.filter((game) => {
+      const matchesSearch =
+        searchQuery === "" ||
+        game.title.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesType = selectedType === null || game.type === selectedType;
       // I generi selezionati sono in OR tra loro: basta che il gioco abbia
       // almeno uno dei generi spuntati per comparire nei risultati.
@@ -46,11 +50,11 @@ export default function Home(): ReactElement {
         favoriteFilter === "all" ||
         (favoriteFilter === "favorite" && game.favorite) ||
         (favoriteFilter === "non_favorite" && !game.favorite);
-      return matchesType && matchesGenres && matchesRating && matchesPlayed && matchesFavorite;
+      return matchesSearch && matchesType && matchesGenres && matchesRating && matchesPlayed && matchesFavorite;
     });
 
     return [...list].sort((a, b) => a.title.localeCompare(b.title));
-  }, [selectedType, selectedGenres, minRating, playedFilter, favoriteFilter]);
+  }, [selectedType, selectedGenres, minRating, playedFilter, favoriteFilter, searchQuery]);
 
   function toggleGenre(genre: string): void {
     setSelectedGenres((prev) =>
@@ -64,6 +68,7 @@ export default function Home(): ReactElement {
     setMinRating(0);
     setPlayedFilter("all");
     setFavoriteFilter("all");
+    setSearchQuery("");
   }
 
   return (
@@ -91,19 +96,31 @@ export default function Home(): ReactElement {
         {/* Filtri: mostrati solo se c'è almeno un gioco in archivio */}
         {boardgames.length > 0 && (
           <div className="mb-8 flex flex-col gap-4">
-            <div className="flex justify-between items-center">
-              <button
-                type="button"
-                onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50"
-              >
-                <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
-                <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
-                <i
-                  className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
-                  aria-hidden="true"
-                />
-              </button>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50"
+                >
+                  <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
+                  <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
+                  <i
+                    className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
+                    aria-hidden="true"
+                  />
+                </button>
+                <div className="relative">
+                  <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#6B829B]" aria-hidden="true" />
+                  <input
+                    type="text"
+                    placeholder="Cerca per titolo..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full rounded-lg bg-[#13263D] pl-9 pr-4 py-2 text-sm text-[#EAF0F6] placeholder-[#6B829B] ring-1 ring-[#23405C] transition-all focus:outline-none focus:ring-[#FF7A29] sm:w-64"
+                  />
+                </div>
+              </div>
             </div>
 
             {isFiltersOpen && (
