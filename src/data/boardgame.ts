@@ -202,7 +202,7 @@ export const boardgames: BoardGame[] = [
   playerCount: "4-12 giocatori",
   duration: "30-60 minuti",
   ageRange: "18+",
-  notes: "Il fortunato e irriverente party game ideato dal Immanuel Casto e Dario Massa.",
+  notes: "Il fortunato e irriverente party game ideato da Immanuel Casto e Dario Massa.",
   favorite: false,
   played: true,
   officialUrl: "https://www.studiosupernova.it/pages/non-si-puo-piu-dire-niente-landing",
