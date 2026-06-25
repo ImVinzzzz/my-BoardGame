@@ -17,7 +17,6 @@ const TYPE_ICONS: Record<string, string> = {
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
-  German: 'fa-solid fa-warehouse',
 };
 
 /** Icone di default per i generi più comuni. Per generi non in lista
@@ -33,7 +32,7 @@ const GENRE_ICONS: Record<string, string> = {
   Fantascienza: 'fa-solid fa-rocket',
   Carte: 'fa-solid fa-layer-group',
   Fantasy: 'fa-solid fa-hat-wizard',
-  'Party Game': 'fa-solid fa-people-roof',
+  'Party Game': 'fa-solid fa-users',
   'Star Trek': 'fa-solid fa-hand-spock',
   Astratto: 'fa-solid fa-cube',
 };

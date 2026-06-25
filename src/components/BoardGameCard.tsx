@@ -16,7 +16,6 @@ const TYPE_SEAL_ICONS: Record<string, string> = {
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
-  German: 'fa-solid fa-warehouse',
 };
 
 function getSealIcon(type: string): string {
