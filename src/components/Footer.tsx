@@ -8,9 +8,20 @@ import type { ReactElement } from 'react';
 export default function Footer(): ReactElement {
   return (
     <footer className="border-t border-[#23405C] bg-[#081320] px-6 py-6 text-center text-xs text-[#6B829B]">
-      <p>
+      <p className="mb-2">
         Sito amatoriale senza fini di lucro. Non si intende infrangere alcun copyright.
         Tutti i marchi registrati appartengono ai relativi proprietari.
+      </p>
+      <p>
+        <a
+          href="https://my-rpg-adventures.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 hover:text-[#38bdf8] transition-colors"
+        >
+          <i className="fa-solid fa-dungeon"></i>
+          <span>Le Cronache di Wyatt Zephirion</span>
+        </a>
       </p>
     </footer>
   );
