@@ -122,7 +122,7 @@ export const boardgames: BoardGame[] = [
   coverImageUrl: "/images/nsppdn.jpg",
   description: "Hai appena aperto i social e capisci che tutti sono indignati per qualcosa. Ma non sai cosa! Dovrai capirlo interpretando gli indizi (cioè i commenti)forniti dagli altri giocatori, ossia i cittadini indignati. Ma attenzione! Tra di loro si nascondono uno o più troll, interessati solo ad aumentare l’entropia dell’universo. NON SI PUÒ PIÙ DIRE NIENTE! è il nuovo gioco di Immanuel Casto: un party game dai contenuti espliciti per adulti indignati",
   type: "Party Game",
-  genres: ["Party Game", "Competitivo", "VM 18"],
+  genres: ["Party Game", "Competitivo", "18+"],
   rating: 3,
   synopsis: "Il gioco include temi di cronaca, storia e cultura social, con frasi fatte, tag ed emoticon per guidare l’Ingenuo. È vietato ai minori e contiene riferimenti a discriminazione, turpiloquio, sesso, droga e violenza...",
   playerCount: "4-12 giocatori",
@@ -178,5 +178,6 @@ export const boardgames: BoardGame[] = [
   ageRange: "10+",
   favorite: false,
   played: true,
+  downloads: [],
 },
 ];
