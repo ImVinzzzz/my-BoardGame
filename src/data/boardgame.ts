@@ -22,7 +22,6 @@ export const boardgames: BoardGame[] = [
   playerCount: "2-6 giocatori",
   duration: "20-40 minuti",
   ageRange: "14+",
-  notes: "Dipendenza linguistica: testo di gioco moderato; serve un foglio illustrativo.",
   favorite: true,
   played: true,
   officialUrl: "https://modiphius.net/products/star-trek-lower-decks-buffer-time-the-card-game",
