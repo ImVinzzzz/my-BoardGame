@@ -114,7 +114,7 @@ export default function BoardGameDetail(): ReactElement {
             <p className="mt-3 leading-relaxed text-[#C3D1DE]">{game.description}</p>
             {game.synopsis && (
               <>
-                <h2 className="mt-8 font-display text-xl font-semibold text-[#EAF0F6]">Sinossi</h2>
+                <h2 className="mt-8 font-display text-xl font-semibold text-[#EAF0F6]">Altro</h2>
                 <p className="mt-3 leading-relaxed text-[#C3D1DE]">{game.synopsis}</p>
               </>
             )}
