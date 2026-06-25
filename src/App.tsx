@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BoardGameDetail from './pages/BoardGameDetail';
 import Footer from './components/Footer';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 /**
  * Componente radice dell'app: configura il routing tra la home
@@ -24,6 +25,7 @@ export default function App(): ReactElement {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <ScrollToTopButton />
     </BrowserRouter>
   );
 }
