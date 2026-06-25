@@ -12,7 +12,7 @@ export default function Footer(): ReactElement {
         Sito amatoriale senza fini di lucro. Non si intende infrangere alcun copyright.
         Tutti i marchi registrati appartengono ai relativi proprietari.
       </p>
-      <p>
+      <p>Guarda anche 
         <a
           href="https://my-rpg-adventures.vercel.app/"
           target="_blank"
