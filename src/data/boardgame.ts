@@ -9,6 +9,24 @@ import type { BoardGame } from '../types';
  */
 export const boardgames: BoardGame[] = [
   {
+  id: "mycelia",
+  slug: "mycelia",
+  title: "Mycelia",
+  subtitle: "Trasporta le magiche gocce di rugiada al Santuario della Vita.",
+  coverImageUrl: "/images/mycelia.jpg",
+  description: "In questo incantevole gioco di costruzione del mazzo (deck-building), collezionerai foglie e farai amicizia con i funghi per aiutarti a liberare il tabellone dalle gocce di rugiada. Le affascinanti illustrazioni sono ispirate a funghi reali e ti delizieranno sicuramente. Costruisci il santuario nella foresta per vedere le gocce di rugiada cadere e crea magici ricordi attorno al tavolo. Adatto ai principianti, questa introduzione al deck-building include una modalità solitaria ed estensioni per aggiungere profondità a tutti i giocatori.",
+  type: "Astratto",
+  genres: ["Competitivo", "Party Game", "Deck-Building", "Carte", "Astratto"],
+  rating: 2,
+  playerCount: "1-4 giocatori",
+  duration: "15-45 minuti",
+  ageRange: "9+",
+  notes: "Un gioco di deck building tanto semplice quanto affascinante.",
+  favorite: false,
+  played: true,
+  downloads: [],
+  },
+  {
   id: "st-lower-decks",
   slug: "st-lower-decks",
   title: "Star Trek: Lower Decks - Buffer Time",
