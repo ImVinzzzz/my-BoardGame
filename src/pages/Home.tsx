@@ -17,7 +17,7 @@ import { type PlayedFilter, type FavoriteFilter } from "../components/FilterBar"
 export default function Home(): ReactElement {
   const [selectedType, setSelectedType] = useState<GameType | null>(null);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [minRating, setMinRating] = useState(0);
+  const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [playedFilter, setPlayedFilter] = useState<PlayedFilter>("all");
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
@@ -56,7 +56,8 @@ export default function Home(): ReactElement {
       const matchesGenres =
         selectedGenres.length === 0 ||
         selectedGenres.some((genre) => game.genres.includes(genre));
-      const matchesRating = minRating === 0 || game.rating >= minRating;
+      const matchesRating =
+        selectedRatings.length === 0 || selectedRatings.includes(game.rating);
       const matchesPlayed =
         playedFilter === "all" ||
         (playedFilter === "played" && game.played) ||
@@ -69,7 +70,7 @@ export default function Home(): ReactElement {
     });
 
     return [...list].sort((a, b) => a.title.localeCompare(b.title));
-  }, [selectedType, selectedGenres, minRating, playedFilter, favoriteFilter, searchQuery]);
+  }, [selectedType, selectedGenres, selectedRatings, playedFilter, favoriteFilter, searchQuery]);
 
   function toggleGenre(genre: string): void {
     setSelectedGenres((prev) =>
@@ -77,10 +78,16 @@ export default function Home(): ReactElement {
     );
   }
 
+  function toggleRating(rating: number): void {
+    setSelectedRatings((prev) =>
+      prev.includes(rating) ? prev.filter((item) => item !== rating) : [...prev, rating]
+    );
+  }
+
   function resetFilters(): void {
     setSelectedType(null);
     setSelectedGenres([]);
-    setMinRating(0);
+    setSelectedRatings([]);
     setPlayedFilter("all");
     setFavoriteFilter("all");
     setSearchQuery("");
@@ -149,12 +156,13 @@ export default function Home(): ReactElement {
                 genres={genres}
                 selectedType={selectedType}
                 selectedGenres={selectedGenres}
-                minRating={minRating}
+                selectedRatings={selectedRatings}
                 playedFilter={playedFilter}
                 favoriteFilter={favoriteFilter}
                 onTypeChange={setSelectedType}
                 onGenreToggle={toggleGenre}
-                onMinRatingChange={setMinRating}
+                onRatingToggle={toggleRating}
+                onRatingsClear={() => setSelectedRatings([])}
                 onPlayedFilterChange={setPlayedFilter}
                 onFavoriteFilterChange={setFavoriteFilter}
                 onReset={resetFilters}
