@@ -94,7 +94,7 @@ export const boardgames: BoardGame[] = [
   description: "Introdotti dai mori, gli azulejos (in origine piastrelle di ceramica bianche e azzurre) furono adottati dai portoghesi quando il loro re Manuel I, visitando il palazzo dell’Alhambra nella Spagna meridionale, rimase affascinato dalla stupefacente bellezza delle piastrelle decorative moresche. Il re, colpito dalla magnificenza delle decorazioni interne dell’Alhambra, diede immediatamente l’ordine di decorare anche il suo palazzo in Portogallo con delle piastrelle simili.",
   type: "Astratto",
   genres: ["Astratto", "Party Game", "Competitivo", "Strategico"],
-  rating: 0,
+  rating: 3,
   synopsis: "Durante la partita dovrete selezionare strategicamente le varie tessere così da costruire un bellissimo mosaico sulla vostra plancia personale. Guadagnerete punti in base alla posizione delle varie tessere, anche in relazione a eventuali pattern specifici e verrete invece penalizzati per le tessere avanzate.Lo scopo del gioco è essere il giocatore con più punti al termine della partita. La partita termina dopo il round in cui almeno un giocatore ha completato una linea orizzontale di 5 piastrelle consecutive sulla sua parete.",
   playerCount: "2-4 giocatori",
   duration: "30-45 minuti",
