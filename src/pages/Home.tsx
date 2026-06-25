@@ -20,7 +20,7 @@ export default function Home(): ReactElement {
   const [minRating, setMinRating] = useState(0);
   const [playedFilter, setPlayedFilter] = useState<PlayedFilter>("all");
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
-  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Generi derivati dai dati: nessuna lista da mantenere manualmente
