@@ -15,7 +15,7 @@ const TYPE_ICONS: Record<string, string> = {
   Cooperativo: 'fa-solid fa-people-group',
   'Party Game': 'fa-solid fa-masks-theater',
   Filler: 'fa-solid fa-stopwatch',
-  Astratto: 'fa-solid fa-shapes',
+  Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
 };
 
@@ -34,6 +34,7 @@ const GENRE_ICONS: Record<string, string> = {
   Fantasy: 'fa-solid fa-hat-wizard',
   'Party Game': 'fa-solid fa-people-roof',
   'Star Trek': 'fa-solid fa-hand-spock',
+  Astratto: 'fa-solid fa-cube',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
