@@ -37,7 +37,7 @@ const GENRE_ICONS: Record<string, string> = {
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
-const DEFAULT_TYPE_ICON = 'fa-solid fa-dice';
+const DEFAULT_TYPE_ICON = 'fa-solid fa-hexagon';
 
 /**
  * Etichetta a "pillola" usata per mostrare la tipologia o il genere di un
