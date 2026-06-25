@@ -111,12 +111,12 @@ export default function Home(): ReactElement {
         {/* Filtri: mostrati solo se c'è almeno un gioco in archivio */}
         {boardgames.length > 0 && (
           <div className="mb-8 flex flex-col gap-4">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap items-center gap-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-center">
+              <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50 shrink-0"
                 >
                   <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
                   <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
@@ -125,14 +125,19 @@ export default function Home(): ReactElement {
                     aria-hidden="true"
                   />
                 </button>
-                <div className="relative">
+                <span className="text-xs sm:text-sm font-semibold text-[#FF7A29] whitespace-nowrap">
+                  {filteredGames.length + (filteredGames.length === 1 ? " scheda visibile" : " schede visibili")}
+                </span>
+              </div>
+              <div className="sm:col-span-1 lg:col-span-2 flex justify-end">
+                <div className="relative w-full">
                   <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#6B829B]" aria-hidden="true" />
                   <input
                     type="text"
                     placeholder="Cerca per titolo..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full rounded-lg bg-[#13263D] pl-9 pr-4 py-2 text-sm text-[#EAF0F6] placeholder-[#6B829B] ring-1 ring-[#23405C] transition-all focus:outline-none focus:ring-[#FF7A29] sm:w-64"
+                    className="w-full rounded-lg bg-[#13263D] pl-9 pr-4 py-2 text-sm text-[#EAF0F6] placeholder-[#6B829B] ring-1 ring-[#23405C] transition-all focus:outline-none focus:ring-[#FF7A29]"
                   />
                 </div>
               </div>
