@@ -85,7 +85,7 @@ export default function BoardGameCard({ game }: BoardGameCardProps): ReactElemen
           <StarRating rating={game.rating} />
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FF7A29] transition-transform group-hover:translate-x-0.5">
             Scopri il gioco
-            <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
+            <i className="fa-solid fa-angles-right text-xs" aria-hidden="true" />
           </span>
         </div>
       </div>
