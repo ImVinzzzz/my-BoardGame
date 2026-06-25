@@ -24,7 +24,7 @@ const TYPE_ICONS: Record<string, string> = {
 const GENRE_ICONS: Record<string, string> = {
   Strategia: 'fa-solid fa-chess',
   Economico: 'fa-solid fa-coins',
-  Famiglia: 'fa-solid fa-people-roof',
+  Famiglia: 'fa-solid fa-house-chimney-window',
   Bluff: 'fa-solid fa-user-secret',
   Deduzione: 'fa-solid fa-magnifying-glass',
   Mistero: 'fa-solid fa-ghost',
