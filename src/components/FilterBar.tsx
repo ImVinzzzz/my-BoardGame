@@ -1,7 +1,8 @@
 import type { ReactElement } from 'react';
 import type { GameType } from '../types';
 
-export type PlayedFilter = 'all' | 'played' | 'unplayed';
+export type PlayedFilter = "all" | "played" | "unplayed";
+export type FavoriteFilter = "all" | "favorite" | "non_favorite";
 
 interface FilterBarProps {
   /** Tipologie disponibili (categorie fisse) */
@@ -16,29 +17,32 @@ interface FilterBarProps {
   minRating: number;
   /** Filtro sullo stato "giocato" */
   playedFilter: PlayedFilter;
+  /** Filtro sullo stato "preferito" */
+  favoriteFilter: FavoriteFilter;
   onTypeChange: (type: GameType | null) => void;
   onGenreToggle: (genre: string) => void;
   onMinRatingChange: (rating: number) => void;
   onPlayedFilterChange: (value: PlayedFilter) => void;
+  onFavoriteFilterChange: (value: FavoriteFilter) => void;
   onReset: () => void;
 }
 
 function chipClasses(active: boolean): string {
   return [
-    'inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors',
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A29] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1E33]',
+    "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A29] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1E33]",
     active
-      ? 'bg-[#FF7A29] text-[#081320]'
-      : 'bg-[#13263D] text-[#C3D1DE] ring-1 ring-[#23405C] hover:text-[#EAF0F6] hover:ring-[#FF7A29]/50',
-  ].join(' ');
+      ? "bg-[#FF7A29] text-[#081320]"
+      : "bg-[#13263D] text-[#C3D1DE] ring-1 ring-[#23405C] hover:text-[#EAF0F6] hover:ring-[#FF7A29]/50",
+  ].join(" ");
 }
 
 const RATING_OPTIONS = [5, 4, 3, 2, 1];
 
 /**
  * Barra dei filtri: tipologia (selezione singola), genere (selezione
- * multipla, in OR tra loro), classificazione minima e stato "giocato"
- * (entrambi a selezione singola). Componente puramente presentazionale:
+ * multipla, in OR tra loro), classificazione minima, stato "giocato"
+ * e stato "preferito" (entrambi a selezione singola). Componente puramente presentazionale:
  * lo stato dei filtri vive in `pages/Home.tsx`.
  */
 export default function FilterBar({
@@ -48,14 +52,20 @@ export default function FilterBar({
   selectedGenres,
   minRating,
   playedFilter,
+  favoriteFilter,
   onTypeChange,
   onGenreToggle,
   onMinRatingChange,
   onPlayedFilterChange,
+  onFavoriteFilterChange,
   onReset,
 }: FilterBarProps): ReactElement {
   const hasActiveFilters =
-    selectedType !== null || selectedGenres.length > 0 || minRating > 0 || playedFilter !== 'all';
+    selectedType !== null ||
+    selectedGenres.length > 0 ||
+    minRating > 0 ||
+    playedFilter !== "all" ||
+    favoriteFilter !== "all";
 
   return (
     <div className="flex flex-col gap-5 rounded-xl border border-[#23405C] bg-[#081320] p-5">
@@ -110,67 +120,105 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Filtro per classificazione minima */}
-      <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-          Classificazione
-        </span>
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => onMinRatingChange(0)}
-            className={chipClasses(minRating === 0)}
-            aria-pressed={minRating === 0}
-          >
-            Tutte
-          </button>
-          {RATING_OPTIONS.map((value) => (
+      {/* Container responsive per Classificazione, Giocato e Preferito */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Filtro per classificazione minima */}
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
+            Classificazione
+          </span>
+          <div className="flex flex-wrap gap-2">
             <button
-              key={value}
               type="button"
-              onClick={() => onMinRatingChange(value)}
-              className={chipClasses(minRating === value)}
-              aria-pressed={minRating === value}
+              onClick={() => onMinRatingChange(0)}
+              className={chipClasses(minRating === 0)}
+              aria-pressed={minRating === 0}
             >
-              <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
-              {value}+
+              Tutte
             </button>
-          ))}
+            {RATING_OPTIONS.map((value) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => onMinRatingChange(value)}
+                className={chipClasses(minRating === value)}
+                aria-pressed={minRating === value}
+              >
+                <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
+                {value}+
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Filtro per stato "giocato" */}
-      <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-          Giocato
-        </span>
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => onPlayedFilterChange('all')}
-            className={chipClasses(playedFilter === 'all')}
-            aria-pressed={playedFilter === 'all'}
-          >
-            Tutti
-          </button>
-          <button
-            type="button"
-            onClick={() => onPlayedFilterChange('played')}
-            className={chipClasses(playedFilter === 'played')}
-            aria-pressed={playedFilter === 'played'}
-          >
-            <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
-            Giocati
-          </button>
-          <button
-            type="button"
-            onClick={() => onPlayedFilterChange('unplayed')}
-            className={chipClasses(playedFilter === 'unplayed')}
-            aria-pressed={playedFilter === 'unplayed'}
-          >
-            <i className="fa-solid fa-circle-question text-[0.7rem]" aria-hidden="true" />
-            Da giocare
-          </button>
+        {/* Filtro per stato "giocato" */}
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
+            Giocato
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => onPlayedFilterChange("all")}
+              className={chipClasses(playedFilter === "all")}
+              aria-pressed={playedFilter === "all"}
+            >
+              Tutti
+            </button>
+            <button
+              type="button"
+              onClick={() => onPlayedFilterChange("played")}
+              className={chipClasses(playedFilter === "played")}
+              aria-pressed={playedFilter === "played"}
+            >
+              <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
+              Giocati
+            </button>
+            <button
+              type="button"
+              onClick={() => onPlayedFilterChange("unplayed")}
+              className={chipClasses(playedFilter === "unplayed")}
+              aria-pressed={playedFilter === "unplayed"}
+            >
+              <i className="fa-solid fa-circle-question text-[0.7rem]" aria-hidden="true" />
+              Da giocare
+            </button>
+          </div>
+        </div>
+
+        {/* Filtro per stato "preferito" */}
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
+            Preferito
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => onFavoriteFilterChange("all")}
+              className={chipClasses(favoriteFilter === "all")}
+              aria-pressed={favoriteFilter === "all"}
+            >
+              Tutti
+            </button>
+            <button
+              type="button"
+              onClick={() => onFavoriteFilterChange("favorite")}
+              className={chipClasses(favoriteFilter === "favorite")}
+              aria-pressed={favoriteFilter === "favorite"}
+            >
+              <i className="fa-solid fa-heart text-[0.7rem]" aria-hidden="true" />
+              Preferiti
+            </button>
+            <button
+              type="button"
+              onClick={() => onFavoriteFilterChange("non_favorite")}
+              className={chipClasses(favoriteFilter === "non_favorite")}
+              aria-pressed={favoriteFilter === "non_favorite"}
+            >
+              <i className="fa-solid fa-heart-crack text-[0.7rem]" aria-hidden="true" />
+              Non preferiti
+            </button>
+          </div>
         </div>
       </div>
 
