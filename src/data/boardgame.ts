@@ -36,7 +36,7 @@ export const boardgames: BoardGame[] = [
   coverImageUrl: "/images/biomos.jpg",
   description: "Giocate nei panni di giovani pianeti che si sviluppano in una galassia lontana. Quando vi avvicinate al vostro primo miliardo di anni, vi ponete tutti insieme una sfida titanica: sviluppare la vita!",
   type: "Party Game",
-  genres: ["Strategico", "Party Game"],
+  genres: ["Strategico", "Carte", "Party Game"],
   rating: 3,
   playerCount: "1-4 giocatori",
   duration: "20-30 minuti",
