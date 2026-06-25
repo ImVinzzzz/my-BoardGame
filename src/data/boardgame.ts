@@ -178,6 +178,5 @@ export const boardgames: BoardGame[] = [
   ageRange: "10+",
   favorite: false,
   played: true,
-  downloads: [],
 },
 ];
