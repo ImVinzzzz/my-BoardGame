@@ -10,12 +10,13 @@ interface BoardGameCardProps {
 
 /** Icona del "sigillo" mostrato sopra la copertina, in base alla tipologia di gioco. */
 const TYPE_SEAL_ICONS: Record<string, string> = {
-  Competitivo: 'fa-solid fa-trophy',
-  Cooperativo: 'fa-solid fa-people-group',
+  Competitivo: 'fa-solid fa-award',
+  Cooperativo: 'fa-solid fa-users',
   'Party Game': 'fa-solid fa-masks-theater',
   Filler: 'fa-solid fa-stopwatch',
-  Astratto: 'fa-solid fa-shapes',
+  Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
+  German: 'fa-solid fa-warehouse',
 };
 
 function getSealIcon(type: string): string {
@@ -85,7 +86,7 @@ export default function BoardGameCard({ game }: BoardGameCardProps): ReactElemen
           <StarRating rating={game.rating} />
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FF7A29] transition-transform group-hover:translate-x-0.5">
             Scopri il gioco
-            <i className="fa-solid fa-angles-right text-xs" aria-hidden="true" />
+            <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
           </span>
         </div>
       </div>

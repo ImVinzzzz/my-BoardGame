@@ -11,12 +11,13 @@ interface TagProps {
 
 /** Icone di default per le tipologie di gioco fisse. */
 const TYPE_ICONS: Record<string, string> = {
-  Competitivo: 'fa-solid fa-trophy',
-  Cooperativo: 'fa-solid fa-people-group',
+  Competitivo: 'fa-solid fa-award',
+  Cooperativo: 'fa-solid fa-users',
   'Party Game': 'fa-solid fa-masks-theater',
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
+  German: 'fa-solid fa-warehouse',
 };
 
 /** Icone di default per i generi più comuni. Per generi non in lista
