@@ -187,7 +187,7 @@ export const boardgames: BoardGame[] = [
   subtitle: "Un'avventura cooperativa nella Terra di Mezzo",
   coverImageUrl: "/images/la-compagnia-dell-anello.jpg",
   description: "Agite come una squadra mentre esplorate la storia di questo emozionante gioco di carte cooperativo: incontrerete via via nuovi personaggi e completerete missioni speciali nell’affrontare il viaggio raccontato nel primo libro dell’amata saga de Il Signore degli Anelli.\n\nGiocate attentamente e in sinergia le vostre carte per superare i pericoli e avanzare attraverso ogni entusiasmante capitolo, dal giorno della partenza dalla Contea fino al fatidico scioglimento della Compagnia.",
-  type: "Competitivo",
+  type: "Cooperativo",
   genres: ["Cooperativo", "Fantasy"],
   rating: 4,
   synopsis: "Con molteplici modalità di gioco e una moltitudine di personaggi iconici con cui giocare, come Gandalf, Tom Bombadil e Galadriel, nessuna partita sarà uguale a un’altra: formate la vostra Compagnia e avventuratevi nella Terra di Mezzo!",
