@@ -73,7 +73,7 @@ export default function BoardGameDetail(): ReactElement {
             to="/"
             className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-[#C3D1DE] hover:text-[#FFB066]"
           >
-            <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+            <i className="fa-solid fa-angles-left" aria-hidden="true" />
             Torna all&apos;archivio
           </Link>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
