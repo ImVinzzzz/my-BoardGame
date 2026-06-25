@@ -110,6 +110,7 @@ export const boardgames: BoardGame[] = [
       description: "Regolamento italiano, 6 pagine",
       fileUrl: "/pdfs/azul_1.pdf",
       icon: "fa-solid fa-book",
+      fileSize: "4.9 MB",
     },
   ],
 },
