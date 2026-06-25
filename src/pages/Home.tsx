@@ -126,7 +126,7 @@ export default function Home(): ReactElement {
                   />
                 </button>
                 <span className="text-xs sm:text-sm font-semibold text-[#FF7A29] whitespace-nowrap">
-                  {filteredGames.length + (filteredGames.length === 1 ? " scheda visibile" : " schede visibili")}
+                  {filteredGames.length + (filteredGames.length === 1 ? " scheda" : " schede")}
                 </span>
               </div>
               <div className="sm:col-span-1 lg:col-span-2 flex justify-end">
