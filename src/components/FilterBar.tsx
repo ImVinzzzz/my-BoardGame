@@ -13,15 +13,16 @@ interface FilterBarProps {
   selectedType: GameType | null;
   /** Generi attualmente selezionati (selezione multipla, OR tra loro) */
   selectedGenres: string[];
-  /** Valutazione minima richiesta; 0 = "Tutte" */
-  minRating: number;
+  /** Classificazioni attualmente selezionate (selezione multipla) */
+  selectedRatings: number[];
   /** Filtro sullo stato "giocato" */
   playedFilter: PlayedFilter;
   /** Filtro sullo stato "preferito" */
   favoriteFilter: FavoriteFilter;
   onTypeChange: (type: GameType | null) => void;
   onGenreToggle: (genre: string) => void;
-  onMinRatingChange: (rating: number) => void;
+  onRatingToggle: (rating: number) => void;
+  onRatingsClear: () => void;
   onPlayedFilterChange: (value: PlayedFilter) => void;
   onFavoriteFilterChange: (value: FavoriteFilter) => void;
   onReset: () => void;
@@ -51,12 +52,13 @@ export default function FilterBar({
   genres,
   selectedType,
   selectedGenres,
-  minRating,
+  selectedRatings,
   playedFilter,
   favoriteFilter,
   onTypeChange,
   onGenreToggle,
-  onMinRatingChange,
+  onRatingToggle,
+  onRatingsClear,
   onPlayedFilterChange,
   onFavoriteFilterChange,
   onReset,
@@ -64,7 +66,7 @@ export default function FilterBar({
   const hasActiveFilters =
     selectedType !== null ||
     selectedGenres.length > 0 ||
-    minRating > 0 ||
+    selectedRatings.length > 0 ||
     playedFilter !== "all" ||
     favoriteFilter !== "all";
 
@@ -146,7 +148,7 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Filtro per classificazione minima (su riga singola) */}
+      {/* Filtro per classificazione (su riga singola a selezione multipla) */}
       <div className="flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
           Classificazione
@@ -154,9 +156,9 @@ export default function FilterBar({
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => onMinRatingChange(0)}
-            className={chipClasses(minRating === 0)}
-            aria-pressed={minRating === 0}
+            onClick={() => onRatingsClear()}
+            className={chipClasses(selectedRatings.length === 0)}
+            aria-pressed={selectedRatings.length === 0}
           >
             Tutte
           </button>
@@ -164,12 +166,12 @@ export default function FilterBar({
             <button
               key={value}
               type="button"
-              onClick={() => onMinRatingChange(value)}
-              className={chipClasses(minRating === value)}
-              aria-pressed={minRating === value}
+              onClick={() => onRatingToggle(value)}
+              className={chipClasses(selectedRatings.includes(value))}
+              aria-pressed={selectedRatings.includes(value)}
             >
               <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
-              {value}+
+              {value}
             </button>
           ))}
         </div>
