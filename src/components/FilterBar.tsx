@@ -27,12 +27,13 @@ interface FilterBarProps {
   onReset: () => void;
 }
 
-function chipClasses(active: boolean): string {
+function chipClasses(active: boolean, activeBgClass?: string): string {
+  const bgClass = activeBgClass ? activeBgClass : "bg-[#FF7A29] text-[#081320]";
   return [
     "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors",
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7A29] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1E33]",
     active
-      ? "bg-[#FF7A29] text-[#081320]"
+      ? bgClass
       : "bg-[#13263D] text-[#C3D1DE] ring-1 ring-[#23405C] hover:text-[#EAF0F6] hover:ring-[#FF7A29]/50",
   ].join(" ");
 }
@@ -69,12 +70,37 @@ export default function FilterBar({
 
   return (
     <div className="flex flex-col gap-5 rounded-xl border border-[#23405C] bg-[#081320] p-5">
-      {/* Filtro per tipologia (selezione singola) */}
+      {/* Filtro per tipologia (selezione singola) e filtri rapidi Preferito/Giocato */}
       <div className="flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-          Tipologia
+          Filtri e Tipologia
         </span>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 items-center">
+          {/* Bottone Preferito (on/off) */}
+          <button
+            type="button"
+            onClick={() => onFavoriteFilterChange(favoriteFilter === "favorite" ? "all" : "favorite")}
+            className={chipClasses(favoriteFilter === "favorite", "bg-[#EC4899] text-white hover:bg-[#F472B6]")}
+            aria-pressed={favoriteFilter === "favorite"}
+          >
+            <i className="fa-solid fa-heart text-[0.7rem]" aria-hidden="true" />
+            Preferito
+          </button>
+
+          {/* Bottone Giocato (on/off) */}
+          <button
+            type="button"
+            onClick={() => onPlayedFilterChange(playedFilter === "played" ? "all" : "played")}
+            className={chipClasses(playedFilter === "played", "bg-[#10B981] text-[#081320] hover:bg-[#34D399]")}
+            aria-pressed={playedFilter === "played"}
+          >
+            <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
+            Giocato
+          </button>
+
+          {/* Separator */}
+          <div className="h-6 w-px bg-[#23405C] mx-1 self-center" />
+
           <button
             type="button"
             onClick={() => onTypeChange(null)}
@@ -120,105 +146,32 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Container responsive per Classificazione, Giocato e Preferito */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* Filtro per classificazione minima */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-            Classificazione
-          </span>
-          <div className="flex flex-wrap gap-2">
+      {/* Filtro per classificazione minima (su riga singola) */}
+      <div className="flex flex-col gap-2">
+        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
+          Classificazione
+        </span>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => onMinRatingChange(0)}
+            className={chipClasses(minRating === 0)}
+            aria-pressed={minRating === 0}
+          >
+            Tutte
+          </button>
+          {RATING_OPTIONS.map((value) => (
             <button
+              key={value}
               type="button"
-              onClick={() => onMinRatingChange(0)}
-              className={chipClasses(minRating === 0)}
-              aria-pressed={minRating === 0}
+              onClick={() => onMinRatingChange(value)}
+              className={chipClasses(minRating === value)}
+              aria-pressed={minRating === value}
             >
-              Tutte
+              <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
+              {value}+
             </button>
-            {RATING_OPTIONS.map((value) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => onMinRatingChange(value)}
-                className={chipClasses(minRating === value)}
-                aria-pressed={minRating === value}
-              >
-                <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
-                {value}+
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Filtro per stato "giocato" */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-            Giocato
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => onPlayedFilterChange("all")}
-              className={chipClasses(playedFilter === "all")}
-              aria-pressed={playedFilter === "all"}
-            >
-              Tutti
-            </button>
-            <button
-              type="button"
-              onClick={() => onPlayedFilterChange("played")}
-              className={chipClasses(playedFilter === "played")}
-              aria-pressed={playedFilter === "played"}
-            >
-              <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
-              Giocati
-            </button>
-            <button
-              type="button"
-              onClick={() => onPlayedFilterChange("unplayed")}
-              className={chipClasses(playedFilter === "unplayed")}
-              aria-pressed={playedFilter === "unplayed"}
-            >
-              <i className="fa-solid fa-circle-question text-[0.7rem]" aria-hidden="true" />
-              Da giocare
-            </button>
-          </div>
-        </div>
-
-        {/* Filtro per stato "preferito" */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#6B829B]">
-            Preferito
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => onFavoriteFilterChange("all")}
-              className={chipClasses(favoriteFilter === "all")}
-              aria-pressed={favoriteFilter === "all"}
-            >
-              Tutti
-            </button>
-            <button
-              type="button"
-              onClick={() => onFavoriteFilterChange("favorite")}
-              className={chipClasses(favoriteFilter === "favorite")}
-              aria-pressed={favoriteFilter === "favorite"}
-            >
-              <i className="fa-solid fa-heart text-[0.7rem]" aria-hidden="true" />
-              Preferiti
-            </button>
-            <button
-              type="button"
-              onClick={() => onFavoriteFilterChange("non_favorite")}
-              className={chipClasses(favoriteFilter === "non_favorite")}
-              aria-pressed={favoriteFilter === "non_favorite"}
-            >
-              <i className="fa-solid fa-heart-crack text-[0.7rem]" aria-hidden="true" />
-              Non preferiti
-            </button>
-          </div>
+          ))}
         </div>
       </div>
 
