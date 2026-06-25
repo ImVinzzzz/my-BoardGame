@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { ReactElement } from "react";
 import { boardgames } from "../data/boardgame";
 import { GAME_TYPES } from "../types";
@@ -22,6 +22,21 @@ export default function Home(): ReactElement {
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Generi derivati dai dati: nessuna lista da mantenere manualmente
   // quando aggiungi un nuovo gioco.
@@ -74,18 +89,18 @@ export default function Home(): ReactElement {
   return (
     <div className="min-h-screen bg-[#0B1E33] text-[#EAF0F6]">
       {/* Intestazione */}
-      <header className="border-b border-[#23405C] bg-[#081320]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 sm:py-14">
+      <header className="sticky top-0 z-40 border-b border-[#23405C] bg-[#081320]/95 backdrop-blur-md transition-all duration-300">
+        <div className={"mx-auto flex max-w-6xl flex-col px-6 transition-all duration-300 " + (isScrolled ? "py-3 gap-1" : "py-8 sm:py-10 gap-3")}>
           <div className="flex items-center gap-3 text-[#FF7A29]">
-            <i className="fa-solid fa-chess-bishop text-2xl" aria-hidden="true" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em]">
+            <i className={"fa-solid fa-chess-bishop transition-all duration-300 " + (isScrolled ? "text-lg" : "text-2xl")} aria-hidden="true" />
+            <span className={"font-semibold uppercase tracking-[0.2em] transition-all duration-300 " + (isScrolled ? "text-[10px]" : "text-xs")}>
               La mia collezione
             </span>
           </div>
-          <h1 className="font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
+          <h1 className={"font-display font-semibold transition-all duration-300 " + (isScrolled ? "text-xl sm:text-2xl" : "text-3xl sm:text-4xl md:text-5xl")}>
             Archivio Board Game
           </h1>
-          <p className="max-w-2xl text-sm text-[#9FB3C8] sm:text-base">
+          <p className={"max-w-2xl text-[#9FB3C8] transition-all duration-300 ease-in-out origin-top " + (isScrolled ? "max-h-0 opacity-0 overflow-hidden mt-0 text-2xs" : "max-h-24 opacity-100 mt-1 text-sm sm:text-base")}>
             Tutti i giochi da tavolo della mia collezione, con regolamenti pronti da scaricare,
             valutazioni personali e a che punto sono nel giocarli tutti.
           </p>
