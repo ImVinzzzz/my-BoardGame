@@ -35,7 +35,7 @@ export const boardgames: BoardGame[] = [
   coverImageUrl: "/images/eroi-di-barcadia.jpg",
   description: "Gli eroi di tutta Barcadia si sono riuniti per rivendicare la propria gloria nella più grande gara di bevute del reame!\nAhimè, alla vigilia delle feste un gruppo di mostri ha rubato tutte le bevande e le ha nascoste da qualche parte all'interno di un enorme dungeon pericolosissimo! Avrete le carte in regola per sbaragliare i vostri avversari e diventare gli eroi che rivendicheranno il prezioso Bottino delle Bevute?\nI bravi ragazzi non sono fatti per questo party game frenetico, dinamico ed esilarante, perfetto per gli amanti del fantasy e delle bevute!",
   type: "Party Game",
-  genres: ["Strategia", "18+", "Party Game"],
+  genres: ["Strategico", "18+", "Party Game"],
   rating: 4,
   synopsis: "L'obiettivo di Eroi di Barcadia è diventare il primo giocatore ad aver raccolto tre Potenziamenti e rivendicato il Bottino delle Bevute sconfiggendo il Guardiano delle Grandi Bevute. C'è solo un Bottino delle Bevute in tutto il dungeon e potrebbe trovarsi ovunque! Cercatelo esplorando il dungeon mentre guadagnate Ricompense dalle lotte con Mostri e Boss. Ma non lasciate che il vostro Bicchiere Barra della Salute arrivi a zero, altrimenti dovrete tornare al Punto di Partenza.",
   playerCount: "2-6 giocatori",
