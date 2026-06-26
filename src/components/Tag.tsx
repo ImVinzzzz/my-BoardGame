@@ -39,6 +39,7 @@ const GENRE_ICONS: Record<string, string> = {
   'Party Game': 'fa-solid fa-masks-theater',
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
+  'Deck-Building': 'fa-solid fa-grip-lines',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
