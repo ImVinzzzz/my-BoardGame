@@ -22,7 +22,7 @@ const TYPE_ICONS: Record<string, string> = {
 /** Icone di default per i generi più comuni. Per generi non in lista
  *  viene usata un'icona generica (fa-tag). */
 const GENRE_ICONS: Record<string, string> = {
-  Strategia: 'fa-solid fa-chess',
+  Strategico: 'fa-solid fa-chess',
   Economico: 'fa-solid fa-coins',
   Famiglia: 'fa-solid fa-house-chimney-window',
   Bluff: 'fa-solid fa-user-secret',
