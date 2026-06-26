@@ -35,6 +35,7 @@ const GENRE_ICONS: Record<string, string> = {
   'Party Game': 'fa-solid fa-users',
   'Star Trek': 'fa-solid fa-hand-spock',
   Astratto: 'fa-solid fa-cube',
+  '18+': 'fa-solid fa-ban',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
