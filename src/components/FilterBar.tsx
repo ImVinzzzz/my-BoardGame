@@ -89,15 +89,15 @@ export default function FilterBar({
             Preferito
           </button>
 
-          {/* Bottone Giocato (on/off) */}
+          {/* Bottone Non giocato (on/off) */}
           <button
             type="button"
-            onClick={() => onPlayedFilterChange(playedFilter === "played" ? "all" : "played")}
-            className={chipClasses(playedFilter === "played", "bg-[#10B981] text-[#081320] hover:bg-[#34D399]")}
-            aria-pressed={playedFilter === "played"}
+            onClick={() => onPlayedFilterChange(playedFilter === "unplayed" ? "all" : "unplayed")}
+            className={chipClasses(playedFilter === "unplayed", "bg-[#10B981] text-[#081320] hover:bg-[#34D399]")}
+            aria-pressed={playedFilter === "unplayed"}
           >
-            <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
-            Giocato
+            <i className="fa-solid fa-hourglass text-[0.7rem]" aria-hidden="true" />
+            Non giocato
           </button>
 
           {/* Separator */}
