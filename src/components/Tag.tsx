@@ -32,10 +32,13 @@ const GENRE_ICONS: Record<string, string> = {
   Fantascienza: 'fa-solid fa-rocket',
   Carte: 'fa-solid fa-layer-group',
   Fantasy: 'fa-solid fa-hat-wizard',
-  'Party Game': 'fa-solid fa-users',
   'Star Trek': 'fa-solid fa-hand-spock',
-  Astratto: 'fa-solid fa-cube',
   '18+': 'fa-solid fa-ban',
+  Competitivo: 'fa-solid fa-award',
+  Cooperativo: 'fa-solid fa-users',
+  'Party Game': 'fa-solid fa-masks-theater',
+  Filler: 'fa-solid fa-stopwatch',
+  Astratto: 'fa-solid fa-cube',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
