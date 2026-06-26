@@ -96,12 +96,12 @@ export default function Home(): ReactElement {
   }
 
   function handleRandomGame(): void {
-    if (boardgames.length === 0) {
+    if (filteredGames.length === 0) {
       return;
     }
 
     // Calcolo dei pesi per favorire i preferiti e le alte valutazioni (rating >= 4)
-    const weightedGames = boardgames.map((game) => {
+    const weightedGames = filteredGames.map((game) => {
       let weight = 1;
       if (game.favorite) {
         weight = weight + 3;
@@ -124,7 +124,7 @@ export default function Home(): ReactElement {
     }
 
     // Fallback
-    navigate("/gioco/" + boardgames[0].slug);
+    navigate("/gioco/" + filteredGames[0].slug);
   }
 
   return (
