@@ -152,31 +152,32 @@ export default function Home(): ReactElement {
         {/* Filtri: mostrati solo se c'è almeno un gioco in archivio */}
         {boardgames.length > 0 && (
           <div className="mb-8 flex flex-col gap-4">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-center">
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50 shrink-0"
-                >
-                  <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
-                  <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
-                  <i
-                    className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
-                    aria-hidden="true"
-                  />
-                </button>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 items-start">
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50 shrink-0"
+                  >
+                    <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
+                    <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
+                    <i
+                      className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
+                      aria-hidden="true"
+                    />
+                  </button>
 
-                <button
-                  type="button"
-                  onClick={handleRandomGame}
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#FF7A29] px-4 py-2 text-sm font-semibold text-[#081320] transition-colors hover:bg-[#FF944D] shrink-0"
-                >
-                  <i className="fa-solid fa-dice text-xs" aria-hidden="true" />
-                  <span>Gioco a caso</span>
-                </button>
-
-                <span className="text-xs sm:text-sm font-semibold text-[#FF7A29] whitespace-nowrap">
+                  <button
+                    type="button"
+                    onClick={handleRandomGame}
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#FF7A29] px-4 py-2 text-sm font-semibold text-[#081320] transition-colors hover:bg-[#FF944D] shrink-0"
+                  >
+                    <i className="fa-solid fa-shuffle text-xs" aria-hidden="true" />
+                    <span>Un gioco a caso</span>
+                  </button>
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-[#FF7A29] whitespace-nowrap pl-1">
                   {filteredGames.length + (filteredGames.length === 1 ? " scheda" : " schede")}
                 </span>
               </div>
