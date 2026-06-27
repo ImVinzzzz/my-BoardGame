@@ -340,6 +340,7 @@ export const boardgames: BoardGame[] = [
   genres: ["Strategico", "18+", "Carte", "Competitivo", "Party Game"],
   rating: 4,
   playerCount: "3+ giocatori",
+  duration: "45-60 minuti",
   ageRange: "18+",
   notes: "Non farti ingannare dalla grafica: Hole In è un gioco di strategia, pianificazione e interazione tra i giocatori!",
   favorite: true,
