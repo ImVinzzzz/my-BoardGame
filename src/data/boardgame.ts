@@ -117,7 +117,7 @@ export const boardgames: BoardGame[] = [
   notes: "Un gioco sostenibile. Biomos è un \"Ecofriendly Game\". Si tratta di un marchio che indica che il gioco è stato realizzato utilizzando solo materiali ecologici riciclabili. Tutti gli elementi sono in carta o cartone, provenienti da foreste gestite in maniera sostenibile.",
   favorite: false,
   played: true,
-  officialUrl: "https://www.gateongames.com/biomos/",
+  officialUrl: "https://subverti.com/en/biomos/",
   downloads: [
     {
       id: "biomos-regolamento",
@@ -329,4 +329,31 @@ export const boardgames: BoardGame[] = [
   officialUrl: "https://www.ghenosgames.com/it/prodotto/limpiccione/",
   downloads: [],
 },
+{
+  id: "hole-in",
+  slug: "hole-in",
+  title: "Hole In",
+  subtitle: "Un innocuo gioco di aperture, centimetri e orgasmi!",
+  coverImageUrl: "/images/hole-in.jpg",
+  description: "L’obiettivo del gioco è semplice (o almeno lo è per qualcuno): raggiungere 3 volte l’Orgasmo. Non basta darci dentro per rimanere soddisfatti, bisogna pianificare le mosse, avere una buona strategia d’approccio e mente aperta. Le Carte CM ti serviranno per accumulare piacere, ma si sa che le dimensioni non sono tutto: con le carte Speciali come il Guardone o la Cazza Ladra, potrai intralciare gli altri giocatori e sfruttare carte come il Viagra e la Sculacciata per raggiungere l’obiettivo più in fretta.",
+  type: "Party Game",
+  genres: ["Strategia", "Party Game", "Carte", "Competitivo"],
+  rating: 4,
+  playerCount: "3+ giocatori",
+  ageRange: "18+",
+  notes: "Non farti ingannare dalla grafica: Hole In è un gioco di strategia, pianificazione e interazione tra i giocatori!",
+  favorite: true,
+  played: true,
+  officialUrl: "https://yasgames.it/product/hole-in/",
+  downloads: [
+    {
+      id: "hole-in-regolamento",
+      label: "Regolamento",
+      description: "Regolamento ufficiale in italiano, 16 pagine.",
+      fileUrl: "/pdfs/hole-in.pdf",
+      icon: "fa-solid fa-file-pdf",
+      fileSize: "0.8 MB",
+    },
+  ],
+ },
 ];
