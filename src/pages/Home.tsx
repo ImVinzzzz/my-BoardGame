@@ -133,9 +133,9 @@ export default function Home(): ReactElement {
       if (selectedAge !== null && game.ageRange) {
         const rawPart = game.ageRange.replace("+", "").trim();
         const gameMinAge = parseInt(rawPart, 10);
-        const filterMinAge = parseInt(selectedAge.replace("+", ""), 10);
+        const filterMinAge = parseInt(selectedAge, 10);
         
-        matchesAge = gameMinAge >= filterMinAge;
+        matchesAge = gameMinAge <= filterMinAge;
       }
 
       return (
