@@ -22,6 +22,9 @@ export default function Home(): ReactElement {
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
   const [playedFilter, setPlayedFilter] = useState<PlayedFilter>("all");
   const [favoriteFilter, setFavoriteFilter] = useState<FavoriteFilter>("all");
+  const [selectedPlayerCount, setSelectedPlayerCount] = useState<string | null>(null);
+  const [selectedDuration, setSelectedDuration] = useState<string | null>(null);
+  const [selectedAge, setSelectedAge] = useState<string | null>(null);
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,11 +71,98 @@ export default function Home(): ReactElement {
         favoriteFilter === "all" ||
         (favoriteFilter === "favorite" && game.favorite) ||
         (favoriteFilter === "non_favorite" && !game.favorite);
-      return matchesSearch && matchesType && matchesGenres && matchesRating && matchesPlayed && matchesFavorite;
+
+      // Filtro Numero giocatori
+      let matchesPlayerCount = true;
+      if (selectedPlayerCount !== null && game.playerCount) {
+        // Estrae il range/valore (es. "3-6", "1-4", "3+", "2")
+        const rawPart = game.playerCount.replace("giocatori", "").trim();
+        if (selectedPlayerCount === "6+") {
+          // Controlliamo se supporta 6 o più giocatori
+          if (rawPart.includes("+")) {
+            const num = parseInt(rawPart.replace("+", ""), 10);
+            matchesPlayerCount = num >= 6;
+          } else if (rawPart.includes("-")) {
+            const parts = rawPart.split("-");
+            const maxVal = parseInt(parts[1], 10);
+            matchesPlayerCount = maxVal >= 6;
+          } else {
+            const val = parseInt(rawPart, 10);
+            matchesPlayerCount = val >= 6;
+          }
+        } else {
+          const filterNum = parseInt(selectedPlayerCount, 10);
+          if (rawPart.includes("+")) {
+            const num = parseInt(rawPart.replace("+", ""), 10);
+            matchesPlayerCount = filterNum >= num;
+          } else if (rawPart.includes("-")) {
+            const parts = rawPart.split("-");
+            const minVal = parseInt(parts[0], 10);
+            const maxVal = parseInt(parts[1], 10);
+            matchesPlayerCount = filterNum >= minVal && filterNum <= maxVal;
+          } else {
+            const val = parseInt(rawPart, 10);
+            matchesPlayerCount = filterNum === val;
+          }
+        }
+      }
+
+      // Filtro Durata della partita
+      let matchesDuration = true;
+      if (selectedDuration !== null && game.duration) {
+        // Estrae la durata massima
+        const rawPart = game.duration.replace("minuti", "").trim();
+        let maxDurationVal = 0;
+        if (rawPart.includes("-")) {
+          const parts = rawPart.split("-");
+          maxDurationVal = parseInt(parts[1], 10);
+        } else {
+          maxDurationVal = parseInt(rawPart, 10);
+        }
+
+        if (selectedDuration === "oltre") {
+          matchesDuration = maxDurationVal > 120;
+        } else {
+          const filterDur = parseInt(selectedDuration, 10);
+          matchesDuration = maxDurationVal <= filterDur;
+        }
+      }
+
+      // Filtro Età consigliata
+      let matchesAge = true;
+      if (selectedAge !== null && game.ageRange) {
+        const rawPart = game.ageRange.replace("+", "").trim();
+        const gameMinAge = parseInt(rawPart, 10);
+        const filterMinAge = parseInt(selectedAge.replace("+", ""), 10);
+        
+        matchesAge = gameMinAge >= filterMinAge;
+      }
+
+      return (
+        matchesSearch &&
+        matchesType &&
+        matchesGenres &&
+        matchesRating &&
+        matchesPlayed &&
+        matchesFavorite &&
+        matchesPlayerCount &&
+        matchesDuration &&
+        matchesAge
+      );
     });
 
     return [...list].sort((a, b) => a.title.localeCompare(b.title));
-  }, [selectedType, selectedGenres, selectedRatings, playedFilter, favoriteFilter, searchQuery]);
+  }, [
+    selectedType,
+    selectedGenres,
+    selectedRatings,
+    playedFilter,
+    favoriteFilter,
+    selectedPlayerCount,
+    selectedDuration,
+    selectedAge,
+    searchQuery,
+  ]);
 
   function toggleGenre(genre: string): void {
     setSelectedGenres((prev) =>
@@ -92,6 +182,9 @@ export default function Home(): ReactElement {
     setSelectedRatings([]);
     setPlayedFilter("all");
     setFavoriteFilter("all");
+    setSelectedPlayerCount(null);
+    setSelectedDuration(null);
+    setSelectedAge(null);
     setSearchQuery("");
   }
 
@@ -204,12 +297,18 @@ export default function Home(): ReactElement {
                 selectedRatings={selectedRatings}
                 playedFilter={playedFilter}
                 favoriteFilter={favoriteFilter}
+                selectedPlayerCount={selectedPlayerCount}
+                selectedDuration={selectedDuration}
+                selectedAge={selectedAge}
                 onTypeChange={setSelectedType}
                 onGenreToggle={toggleGenre}
                 onRatingToggle={toggleRating}
                 onRatingsClear={() => setSelectedRatings([])}
                 onPlayedFilterChange={setPlayedFilter}
                 onFavoriteFilterChange={setFavoriteFilter}
+                onPlayerCountChange={setSelectedPlayerCount}
+                onDurationChange={setSelectedDuration}
+                onAgeChange={setSelectedAge}
                 onReset={resetFilters}
               />
             )}
