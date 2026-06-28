@@ -119,6 +119,29 @@ export default function BoardGameDetail(): ReactElement {
                 <p className="mt-3 leading-relaxed text-[#C3D1DE]">{game.synopsis}</p>
               </>
             )}
+
+            {(game.pros || game.cons) && (
+              <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {game.pros && (
+                  <div className="rounded-xl border border-green-500/30 bg-green-500/5 p-5">
+                    <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
+                      <i className="fa-solid fa-thumbs-up text-green-500" aria-hidden="true" />
+                      PRO
+                    </h3>
+                    <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.pros}</p>
+                  </div>
+                )}
+                {game.cons && (
+                  <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-5">
+                    <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
+                      <i className="fa-solid fa-thumbs-down text-red-500" aria-hidden="true" />
+                      CONTRO
+                    </h3>
+                    <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.cons}</p>
+                  </div>
+                )}
+              </div>
+            )}
           </section>
 
           {/* Scheda rapida */}
