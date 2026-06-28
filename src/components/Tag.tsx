@@ -17,6 +17,7 @@ const TYPE_ICONS: Record<string, string> = {
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
+  'Excape Game': 'fa-solid fa-door-open',
 };
 
 /** Icone di default per i generi più comuni. Per generi non in lista
