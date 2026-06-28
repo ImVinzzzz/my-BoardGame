@@ -41,6 +41,7 @@ const GENRE_ICONS: Record<string, string> = {
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   'Deck-Building': 'fa-solid fa-grip-lines',
+  'Excape Game': 'fa-solid fa-door-open',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-tag';
