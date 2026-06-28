@@ -6,6 +6,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import App from './App';
 import './index.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 // Aggiungiamo i set di icone alla libreria globale
 library.add(fas, far, fab);
