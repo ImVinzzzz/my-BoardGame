@@ -73,6 +73,10 @@ export interface BoardGame {
   ageRange?: string;
   /** Note libere mostrate in un box dedicato (es. varianti, house rules, avvertenze) */
   notes?: string;
+  /** Punti di forza del gioco */
+  pros?: string;
+  /** Punti deboli del gioco */
+  cons?: string;
   /** Se true, mostra il badge "Preferito" in home e nella scheda */
   favorite?: boolean;
   /** Indica se questo gioco è già stato giocato almeno una volta */
