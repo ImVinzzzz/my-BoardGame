@@ -1,4 +1,17 @@
 import type { ReactElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHeart,
+  faHourglass,
+  faLayerGroup,
+  faCube,
+  faTag,
+  faStar,
+  faUsers,
+  faHourglassHalf,
+  faCakeCandles,
+  faRotateLeft
+} from '@fortawesome/free-solid-svg-icons';
 import type { GameType } from '../types';
 
 export type PlayedFilter = "all" | "played" | "unplayed";
@@ -104,7 +117,7 @@ export default function FilterBar({
             className={chipClasses(favoriteFilter === "favorite", "bg-[#EC4899] text-white hover:bg-[#F472B6]")}
             aria-pressed={favoriteFilter === "favorite"}
           >
-            <i className="fa-solid fa-heart text-[0.7rem]" aria-hidden="true" />
+            <FontAwesomeIcon icon={faHeart} className="text-[0.7rem]" />
             Preferito
           </button>
 
@@ -115,7 +128,7 @@ export default function FilterBar({
             className={chipClasses(playedFilter === "unplayed", "bg-[#10B981] text-[#081320] hover:bg-[#34D399]")}
             aria-pressed={playedFilter === "unplayed"}
           >
-            <i className="fa-solid fa-hourglass text-[0.7rem]" aria-hidden="true" />
+            <FontAwesomeIcon icon={faHourglass} className="text-[0.7rem]" />
             Non giocato
           </button>
 
@@ -128,7 +141,7 @@ export default function FilterBar({
             className={chipClasses(selectedType === null)}
             aria-pressed={selectedType === null}
           >
-            <i className="fa-solid fa-layer-group text-[0.7rem]" aria-hidden="true" />
+            <FontAwesomeIcon icon={faLayerGroup} className="text-[0.7rem]" />
             Tutte
           </button>
           {types.map((type) => (
@@ -139,7 +152,7 @@ export default function FilterBar({
               className={chipClasses(selectedType === type)}
               aria-pressed={selectedType === type}
             >
-              <i className="fa-solid fa-cube text-[0.7rem]" aria-hidden="true" />
+              <FontAwesomeIcon icon={faCube} className="text-[0.7rem]" />
               {type}
             </button>
           ))}
@@ -160,7 +173,7 @@ export default function FilterBar({
               className={chipClasses(selectedGenres.includes(genre))}
               aria-pressed={selectedGenres.includes(genre)}
             >
-              <i className="fa-solid fa-tag text-[0.7rem]" aria-hidden="true" />
+              <FontAwesomeIcon icon={faTag} className="text-[0.7rem]" />
               {genre}
             </button>
           ))}
@@ -191,7 +204,7 @@ export default function FilterBar({
                 className={chipClasses(selectedRatings.includes(value))}
                 aria-pressed={selectedRatings.includes(value)}
               >
-                <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
+                <FontAwesomeIcon icon={faStar} className="text-[0.7rem]" />
                 {value}
               </button>
             ))}
@@ -220,7 +233,7 @@ export default function FilterBar({
                 className={chipClasses(selectedPlayerCount === value)}
                 aria-pressed={selectedPlayerCount === value}
               >
-                <i className="fa-solid fa-users text-[0.7rem]" aria-hidden="true" />
+                <FontAwesomeIcon icon={faUsers} className="text-[0.7rem]" />
                 {value}
               </button>
             ))}
@@ -252,7 +265,7 @@ export default function FilterBar({
                 className={chipClasses(selectedDuration === value)}
                 aria-pressed={selectedDuration === value}
               >
-                <i className="fa-solid fa-hourglass-half text-[0.7rem]" aria-hidden="true" />
+                <FontAwesomeIcon icon={faHourglassHalf} className="text-[0.7rem]" />
                 {value === "oltre" ? "oltre 120" : value}
               </button>
             ))}
@@ -281,7 +294,7 @@ export default function FilterBar({
                 className={chipClasses(selectedAge === value)}
                 aria-pressed={selectedAge === value}
               >
-                <i className="fa-solid fa-cake-candles text-[0.7rem]" aria-hidden="true" />
+                <FontAwesomeIcon icon={faCakeCandles} className="text-[0.7rem]" />
                 {value}
               </button>
             ))}
@@ -295,7 +308,7 @@ export default function FilterBar({
           onClick={onReset}
           className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-[#FF7A29] hover:text-[#FFB066]"
         >
-          <i className="fa-solid fa-rotate-left text-[0.7rem]" aria-hidden="true" />
+          <FontAwesomeIcon icon={faRotateLeft} className="text-[0.7rem]" />
           Azzera filtri
         </button>
       )}

@@ -1,4 +1,6 @@
 import { useEffect, useState, type ReactElement } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function ScrollToTopButton(): ReactElement | null {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +55,7 @@ export default function ScrollToTopButton(): ReactElement | null {
       className="fixed right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-[#FF7A29] text-[#081320] shadow-lg transition-all duration-300 hover:bg-[#FFB066] hover:scale-110 focus:outline-none"
       aria-label="Torna in cima"
     >
-      <i className="fa-solid fa-angle-up text-lg" aria-hidden="true" />
+      <FontAwesomeIcon icon={faAngleUp} className="text-lg" />
     </button>
   );
 }

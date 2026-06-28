@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { parseIconString } from '../utils/icon';
 
 export type TagVariant = 'type' | 'genre';
 
@@ -66,7 +68,7 @@ export default function Tag({ label, variant = 'genre', icon }: TagProps): React
 
   return (
     <span className={`${baseClasses} ${variantClasses}`}>
-      <i className={`${resolvedIcon} text-[0.7rem]`} aria-hidden="true" />
+      <FontAwesomeIcon icon={parseIconString(resolvedIcon)} className="text-[0.7rem]" />
       {label}
     </span>
   );

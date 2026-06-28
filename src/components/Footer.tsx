@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDungeon } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Footer mostrato in calce a ogni pagina. Viene renderizzato in App.tsx,
@@ -12,14 +14,14 @@ export default function Footer(): ReactElement {
         Sito amatoriale senza fini di lucro. Non si intende infrangere alcun copyright.
         Tutti i marchi registrati appartengono ai relativi proprietari.
       </p>
-      <p>Guarda anche &nbsp;
+      <p>Guard anche &nbsp;
         <a
           href="https://my-rpg-adventures.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 hover:text-[#38bdf8] transition-colors"
         >
-          <i className="fa-solid fa-dungeon"></i>
+          <FontAwesomeIcon icon={faDungeon} />
           <span>Le Cronache di Wyatt Zephirion</span>
         </a>
       </p>

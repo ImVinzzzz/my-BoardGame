@@ -1,4 +1,7 @@
 import type { ReactElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 
 interface StarRatingProps {
   /** Valutazione da 0 a 5 */
@@ -20,10 +23,10 @@ export default function StarRating({ rating, size = 'text-sm' }: StarRatingProps
       {Array.from({ length: 5 }).map((_, index) => {
         const filled = index < clampedRating;
         return (
-          <i
+          <FontAwesomeIcon
             key={index}
-            className={`${filled ? 'fa-solid' : 'fa-regular'} fa-star ${size} ${filled ? 'text-[#FFD60A]' : 'text-[#3A5570]'}`}
-            aria-hidden="true"
+            icon={filled ? faStarSolid : faStarRegular}
+            className={`${size} ${filled ? 'text-[#FFD60A]' : 'text-[#3A5570]'}`}
           />
         );
       })}

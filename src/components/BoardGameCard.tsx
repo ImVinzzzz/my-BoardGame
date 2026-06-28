@@ -1,8 +1,11 @@
 import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import type { BoardGame } from '../types';
 import Tag from './Tag';
 import StarRating from './StarRating';
+import { parseIconString } from '../utils/icon';
 
 interface BoardGameCardProps {
   game: BoardGame;
@@ -47,14 +50,14 @@ export default function BoardGameCard({ game }: BoardGameCardProps): ReactElemen
 
         {game.favorite && (
           <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[#FF3D81]/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
-            <i className="fa-solid fa-heart text-[0.65rem]" aria-hidden="true" />
+            <FontAwesomeIcon icon={faHeart} className="text-[0.65rem]" />
             Preferito
           </span>
         )}
 
         {/* Sigillo con l'icona della tipologia di gioco */}
         <div className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-[#081320]/80 text-[#FFB066] shadow-md ring-2 ring-[#FF7A29]/70 backdrop-blur-sm">
-          <i className={`${getSealIcon(game.type)} text-base`} aria-hidden="true" />
+          <FontAwesomeIcon icon={parseIconString(getSealIcon(game.type))} className="text-base" />
         </div>
       </div>
 
@@ -85,7 +88,7 @@ export default function BoardGameCard({ game }: BoardGameCardProps): ReactElemen
           <StarRating rating={game.rating} />
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#FF7A29] transition-transform group-hover:translate-x-0.5">
             Scopri il gioco
-            <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
+            <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
           </span>
         </div>
       </div>
