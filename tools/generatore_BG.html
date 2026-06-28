@@ -88,7 +88,7 @@
               <option value="Astratto">Astratto</option>
               <option value="Competitivo">Competitivo</option>
               <option value="Cooperativo">Cooperativo</option>
-			  <option value="Excape Game">Excape Game</option>
+              <option value="Excape Game">Excape Game</option>
               <option value="Filler">Filler</option>
               <option value="Party Game">Party Game</option>
               <option value="Strategico">Strategico</option>
@@ -98,7 +98,7 @@
             <label class="block text-sm font-semibold mb-1" for="genres">Genere</label>
             <input id="genres" type="text"
               class="w-full rounded-lg bg-[#081320] border border-[#23405C] px-3 py-2 focus:outline-none focus:border-[#FF7A29]"
-              placeholder="Strategia, Economico (separati da virgola)" />
+              placeholder="Strategico, Astratto (separati da virgola)" />
           </div>
         </div>
 
@@ -150,6 +150,25 @@
           <label class="block text-sm font-semibold mb-1" for="notes">Note</label>
           <textarea id="notes" rows="2"
             class="w-full rounded-lg bg-[#081320] border border-[#23405C] px-3 py-2 focus:outline-none focus:border-[#FF7A29]"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-green-400" for="pros">
+              <i class="fa-solid fa-thumbs-up mr-1"></i> PRO
+            </label>
+            <textarea id="pros" rows="2"
+              class="w-full rounded-lg bg-[#081320] border border-[#23405C] px-3 py-2 focus:outline-none focus:border-green-500"
+              placeholder="Aspetti positivi, punti di forza..."></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1 text-red-400" for="cons">
+              <i class="fa-solid fa-thumbs-down mr-1"></i> CONTRO
+            </label>
+            <textarea id="cons" rows="2"
+              class="w-full rounded-lg bg-[#081320] border border-[#23405C] px-3 py-2 focus:outline-none focus:border-red-500"
+              placeholder="Aspetti negativi, punti deboli..."></textarea>
+          </div>
         </div>
 
         <div>
@@ -444,6 +463,8 @@
       const duration = document.getElementById('duration').value.trim();
       const ageRange = document.getElementById('ageRange').value.trim();
       const notes = document.getElementById('notes').value.trim();
+      const pros = document.getElementById('pros').value.trim();
+      const cons = document.getElementById('cons').value.trim();
       const officialUrl = document.getElementById('officialUrl').value.trim();
       const favorite = document.getElementById('favorite').checked;
       const played = document.getElementById('played').checked;
@@ -464,6 +485,8 @@
       if (duration) lines.push(`duration: ${tsString(duration)},`);
       if (ageRange) lines.push(`ageRange: ${tsString(ageRange)},`);
       if (notes) lines.push(`notes: ${tsString(notes)},`);
+      if (pros) lines.push(`pros: ${tsString(pros)},`);
+      if (cons) lines.push(`cons: ${tsString(cons)},`);
       lines.push(`favorite: ${favorite},`);
       lines.push(`played: ${played},`);
       if (officialUrl) lines.push(`officialUrl: ${tsString(officialUrl)},`);
