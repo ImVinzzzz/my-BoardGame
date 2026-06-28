@@ -1,9 +1,20 @@
 import type { ReactElement } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faDiceSix,
+  faAnglesLeft,
+  faHeart,
+  faUpRightFromSquare,
+  faThumbsUp,
+  faThumbsDown,
+  faFeatherPointed
+} from '@fortawesome/free-solid-svg-icons';
 import { boardgames } from '../data/boardgame';
 import Tag from '../components/Tag';
 import StarRating from '../components/StarRating';
 import DownloadButton from '../components/DownloadButton';
+import { parseIconString } from '../utils/icon';
 
 interface MetaItem {
   icon: string;
@@ -24,7 +35,7 @@ export default function BoardGameDetail(): ReactElement {
   if (!game) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#0B1E33] px-6 text-center text-[#EAF0F6]">
-        <i className="fa-solid fa-dice-six text-4xl text-[#FF7A29]" aria-hidden="true" />
+        <FontAwesomeIcon icon={faDiceSix} className="text-4xl text-[#FF7A29]" />
         <h1 className="font-display text-2xl font-semibold">Gioco non trovato</h1>
         <p className="text-[#9FB3C8]">
           Questo gioco non esiste, o non è ancora stato archiviato.
@@ -33,7 +44,7 @@ export default function BoardGameDetail(): ReactElement {
           to="/"
           className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#FF7A29] px-5 py-2 text-sm font-semibold text-[#081320] transition hover:bg-[#FFB066]"
         >
-          <i className="fa-solid fa-angles-left" aria-hidden="true" />
+          <FontAwesomeIcon icon={faAnglesLeft} />
           Torna all&apos;archivio
         </Link>
       </div>
@@ -66,7 +77,7 @@ export default function BoardGameDetail(): ReactElement {
             to="/"
             className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-[#C3D1DE] hover:text-[#FFB066]"
           >
-            <i className="fa-solid fa-angles-left" aria-hidden="true" />
+            <FontAwesomeIcon icon={faAnglesLeft} />
             Torna all&apos;archivio
           </Link>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
@@ -76,7 +87,7 @@ export default function BoardGameDetail(): ReactElement {
           {game.favorite && (
             <div className="mt-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FF3D81]/90 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md">
-                <i className="fa-solid fa-heart text-xs" aria-hidden="true" />
+                <FontAwesomeIcon icon={faHeart} className="text-xs" />
                 Preferito
               </span>
             </div>
@@ -103,7 +114,7 @@ export default function BoardGameDetail(): ReactElement {
               className="inline-flex items-center gap-2 rounded-full border border-[#FF7A29]/40 px-4 py-2 text-sm font-semibold text-[#FFB066] transition hover:border-[#FF7A29] hover:bg-[#FF7A29]/10"
             >
               Pagina ufficiale
-              <i className="fa-solid fa-up-right-from-square text-xs" aria-hidden="true" />
+              <FontAwesomeIcon icon={faUpRightFromSquare} className="text-xs" />
             </a>
           )}
         </div>
@@ -125,7 +136,7 @@ export default function BoardGameDetail(): ReactElement {
                 {game.pros && (
                   <div className="rounded-xl border border-green-500/30 bg-green-500/5 p-5">
                     <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
-                      <i className="fa-solid fa-thumbs-up text-green-500" aria-hidden="true" />
+                      <FontAwesomeIcon icon={faThumbsUp} className="text-green-500" />
                       PRO
                     </h3>
                     <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.pros}</p>
@@ -134,7 +145,7 @@ export default function BoardGameDetail(): ReactElement {
                 {game.cons && (
                   <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-5">
                     <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
-                      <i className="fa-solid fa-thumbs-down text-red-500" aria-hidden="true" />
+                      <FontAwesomeIcon icon={faThumbsDown} className="text-red-500" />
                       CONTRO
                     </h3>
                     <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.cons}</p>
@@ -150,7 +161,7 @@ export default function BoardGameDetail(): ReactElement {
             <ul className="mt-4 flex flex-col gap-3">
               {metaItems.map((item) => (
                 <li key={item.label} className="flex items-center gap-3 text-sm text-[#C3D1DE]">
-                  <i className={`${item.icon} w-4 text-[#FF7A29]`} aria-hidden="true" />
+                  <FontAwesomeIcon icon={parseIconString(item.icon)} className="w-4 text-[#FF7A29]" />
                   {item.label}
                 </li>
               ))}
@@ -162,7 +173,7 @@ export default function BoardGameDetail(): ReactElement {
         {game.notes && (
           <section className="mt-10 rounded-xl border border-dashed border-[#FF7A29]/40 bg-[#13263D] p-5">
             <h2 className="flex items-center gap-2 font-display text-lg font-semibold text-[#EAF0F6]">
-              <i className="fa-solid fa-feather-pointed text-[#FF7A29]" aria-hidden="true" />
+              <FontAwesomeIcon icon={faFeatherPointed} className="text-[#FF7A29]" />
               Note
             </h2>
             <p className="mt-3 whitespace-pre-line leading-relaxed text-[#C3D1DE]">{game.notes}</p>

@@ -1,6 +1,16 @@
 import { useMemo, useState, useEffect } from "react";
 import type { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSliders,
+  faChevronUp,
+  faChevronDown,
+  faShuffle,
+  faMagnifyingGlass,
+  faBoxArchive,
+  faRotateLeft
+} from '@fortawesome/free-solid-svg-icons';
 import { boardgames } from "../data/boardgame";
 import { GAME_TYPES } from "../types";
 import type { GameType } from "../types";
@@ -253,12 +263,9 @@ export default function Home(): ReactElement {
                     onClick={() => setIsFiltersOpen(!isFiltersOpen)}
                     className="inline-flex items-center gap-2 rounded-lg bg-[#13263D] px-4 py-2 text-sm font-semibold text-[#EAF0F6] ring-1 ring-[#23405C] transition-colors hover:text-[#FF7A29] hover:ring-[#FF7A29]/50 shrink-0"
                   >
-                    <i className="fa-solid fa-sliders text-xs" aria-hidden="true" />
+                    <FontAwesomeIcon icon={faSliders} className="text-xs" />
                     <span>{isFiltersOpen ? "Nascondi filtri" : "Mostra filtri"}</span>
-                    <i
-                      className={"fa-solid " + (isFiltersOpen ? "fa-chevron-up" : "fa-chevron-down") + " text-xs ml-1"}
-                      aria-hidden="true"
-                    />
+                    <FontAwesomeIcon icon={isFiltersOpen ? faChevronUp : faChevronDown} className="text-xs ml-1" />
                   </button>
 
                   <button
@@ -266,7 +273,7 @@ export default function Home(): ReactElement {
                     onClick={handleRandomGame}
                     className="inline-flex items-center gap-2 rounded-lg bg-[#FF7A29] px-4 py-2 text-sm font-semibold text-[#081320] transition-colors hover:bg-[#FF944D] shrink-0"
                   >
-                    <i className="fa-solid fa-shuffle text-xs" aria-hidden="true" />
+                    <FontAwesomeIcon icon={faShuffle} className="text-xs" />
                     <span>Un gioco a caso</span>
                   </button>
                 </div>
@@ -276,7 +283,7 @@ export default function Home(): ReactElement {
               </div>
               <div className="sm:col-span-1 lg:col-span-2 flex justify-end">
                 <div className="relative w-full">
-                  <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#6B829B]" aria-hidden="true" />
+                  <FontAwesomeIcon icon={faMagnifyingGlass} className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#6B829B]" />
                   <input
                     type="text"
                     placeholder="Cerca per titolo..."
@@ -318,7 +325,7 @@ export default function Home(): ReactElement {
         {/* Griglia giochi */}
         {boardgames.length === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-xl border border-dashed border-[#23405C] py-16 text-center text-[#6B829B]">
-            <i className="fa-solid fa-box-archive text-3xl" aria-hidden="true" />
+            <FontAwesomeIcon icon={faBoxArchive} className="text-3xl" />
             <p>
               L&apos;archivio è vuoto per ora. Aggiungi un nuovo gioco in{' '}
               <code className="rounded bg-[#13263D] px-1.5 py-0.5 text-[#FF7A29]">
@@ -335,14 +342,14 @@ export default function Home(): ReactElement {
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3 rounded-xl border border-dashed border-[#23405C] py-16 text-center text-[#6B829B]">
-            <i className="fa-solid fa-magnifying-glass text-3xl" aria-hidden="true" />
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-3xl" />
             <p>Nessun gioco corrisponde ai filtri selezionati.</p>
             <button
               type="button"
               onClick={resetFilters}
               className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-[#FF7A29] hover:text-[#FFB066]"
             >
-              <i className="fa-solid fa-rotate-left text-xs" aria-hidden="true" />
+              <FontAwesomeIcon icon={faRotateLeft} className="text-xs" />
               Azzera filtri
             </button>
           </div>
