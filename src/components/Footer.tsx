@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDungeon } from '@fortawesome/free-solid-svg-icons';
+import { faDungeon, faWrench } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Footer mostrato in calce a ogni pagina. Viene renderizzato in App.tsx,
@@ -14,17 +15,31 @@ export default function Footer(): ReactElement {
         Sito amatoriale senza fini di lucro. Non si intende infrangere alcun copyright.
         Tutti i marchi registrati appartengono ai relativi proprietari.
       </p>
-      <p>Guard anche &nbsp;
-        <a
-          href="https://my-rpg-adventures.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 hover:text-[#38bdf8] transition-colors"
-        >
-          <FontAwesomeIcon icon={faDungeon} />
-          <span>Le Cronache di Wyatt Zephirion</span>
-        </a>
-      </p>
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <p>
+          Guarda anche &nbsp;
+          <a
+            href="https://my-rpg-adventures.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-[#38bdf8] transition-colors"
+          >
+            <FontAwesomeIcon icon={faDungeon} />
+            <span>Le Cronache di Wyatt Zephirion</span>
+          </a>
+        </p>
+        <span className="hidden sm:inline text-[#23405C]">|</span>
+        <p>
+          Area Gestione &nbsp;
+          <Link
+            to="/editor"
+            className="inline-flex items-center gap-1.5 hover:text-[#FF7A29] transition-colors"
+          >
+            <FontAwesomeIcon icon={faWrench} />
+            <span>Generatore Scheda</span>
+          </Link>
+        </p>
+      </div>
     </footer>
   );
 }
