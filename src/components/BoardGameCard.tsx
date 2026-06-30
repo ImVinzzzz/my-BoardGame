@@ -19,6 +19,7 @@ const TYPE_SEAL_ICONS: Record<string, string> = {
   Filler: 'fa-solid fa-stopwatch',
   Astratto: 'fa-solid fa-cube',
   Strategico: 'fa-solid fa-chess-knight',
+  'Excape Game': 'fa-solid fa-door-open',
 };
 
 function getSealIcon(type: string): string {
