@@ -12,8 +12,8 @@ export type GameType =
   | 'Party Game'
   | 'Filler'
   | 'Astratto'
-  | 'Strategico';
-  | 'Escape Game';
+  | 'Strategico'
+  | 'Excape Game';
 
 /** Elenco delle tipologie disponibili, usato per popolare select e filtri. */
 export const GAME_TYPES: GameType[] = [
@@ -23,7 +23,7 @@ export const GAME_TYPES: GameType[] = [
   'Filler',
   'Astratto',
   'Strategico',
-  'Escape Game';
+  'Excape Game',
 ];
 
 /** Una risorsa scaricabile collegata a un gioco (regolamento, espansioni, ecc.). */

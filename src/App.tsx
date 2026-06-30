@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BoardGameDetail from './pages/BoardGameDetail';
+import BoardGameEditor from './pages/BoardGameEditor';
 import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
@@ -21,6 +22,7 @@ export default function App(): ReactElement {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gioco/:slug" element={<BoardGameDetail />} />
+        <Route path="/editor" element={<BoardGameEditor />} />
         {/* Qualsiasi path non riconosciuto riporta in home */}
         <Route path="*" element={<Home />} />
       </Routes>
