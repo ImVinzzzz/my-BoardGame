@@ -42,7 +42,7 @@ export const boardgames: BoardGame[] = [
   playerCount: "2-7",
   duration: "45 minuti",
   ageRange: "12+",
-  notes: "Designer: Oleksandr Nevskiy, Oleg Sidorenko. \\nArtista: Igor Burlakov, Xavier Collette,",
+  notes: "Designer: Oleksandr Nevskiy, Oleg Sidorenko. \nArtista: Igor Burlakov, Xavier Collette,",
   pros: "Alta rigiocabilità. \nBellissima grafica delle carte.",
   favorite: true,
   played: true,
