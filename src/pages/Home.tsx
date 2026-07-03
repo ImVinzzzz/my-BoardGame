@@ -9,8 +9,9 @@ import {
   faShuffle,
   faMagnifyingGlass,
   faBoxArchive,
-  faRotateLeft
-} from '@fortawesome/free-solid-svg-icons';
+  faRotateLeft,
+  faChessBishop
+} from "@fortawesome/free-solid-svg-icons";
 import { boardgames } from "../data/boardgame";
 import { GAME_TYPES } from "../types";
 import type { GameType } from "../types";
@@ -236,7 +237,11 @@ export default function Home(): ReactElement {
       <header className="sticky top-0 z-40 border-b border-[#23405C] bg-[#081320]/95 backdrop-blur-md transition-all duration-300">
         <div className={"mx-auto flex max-w-6xl flex-col px-6 transition-all duration-300 " + (isScrolled ? "py-3 gap-1" : "py-8 sm:py-10 gap-3")}>
           <div className="flex items-center gap-3 text-[#FF7A29]">
-            <i className={"fa-solid fa-chess-bishop transition-all duration-300 " + (isScrolled ? "text-lg" : "text-2xl")} aria-hidden="true" />
+            <FontAwesomeIcon
+              icon={faChessBishop}
+              className={"transition-all duration-300 " + (isScrolled ? "text-lg" : "text-2xl")}
+              aria-hidden="true"
+            />
             <span className={"font-semibold uppercase tracking-[0.2em] transition-all duration-300 " + (isScrolled ? "text-[10px]" : "text-xs")}>
               La mia collezione
             </span>
