@@ -61,7 +61,7 @@ function chipClasses(active: boolean, activeBgClass?: string): string {
 
 const RATING_OPTIONS = [5, 4, 3, 2, 1];
 const PLAYER_COUNT_OPTIONS = ["1", "2", "3", "4", "5", "6+"];
-const DURATION_OPTIONS = ["15", "30", "45", "60", "120", "oltre"];
+const DURATION_OPTIONS = ["15", "30", "45", "60", "90", "120", "oltre"];
 const AGE_OPTIONS = ["5", "8", "10", "12", "15"];
 
 /**
