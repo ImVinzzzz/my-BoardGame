@@ -23,7 +23,7 @@ export default function Footer(): ReactElement {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">
           {/* Colonna di sinistra: Guarda anche */}
           <div className="flex flex-col gap-3">
-            <span className="font-semibold uppercase tracking-wider text-[#EAF0F6]">Guarda anche</span>
+            <span className="font-semibold uppercase tracking-wider text-[#EAF0F6]">Vedi anche</span>
             <div className="flex flex-col gap-2">
               <a
                 href="https://my-rpg-adventures.vercel.app/"
