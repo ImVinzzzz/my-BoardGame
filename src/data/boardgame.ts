@@ -85,7 +85,7 @@ export const boardgames: BoardGame[] = [
   coverImageUrl: "/images/rebirth.jpg",
   description: "Dopo una serie di calamità che hanno lasciato la civiltà in rovina, le società di tutto il mondo vengono ricostruite in armonia con la natura. La Scozia giace in rovina e gli antichi clan si sono assunti la responsabilità di restaurare la terra. Come capi clan competerete per il controllo strategico del territorio ricostruendo i suoi prestigiosi castelli.\n\nRebirth è un nuovo gioco di posizionamento delle tessere di Reiner Knizia. Il gioco rivitalizza questo genere classico combinando le eleganti meccaniche di Knizia con la costruzione del mondo evocativa di Mighty Boards. Il risultato è un eurogame con un gameplay fluido, ambientato in un futuro lussureggiante e speranzoso.",
   type: "Competitivo",
-  genres: ["Party Game", "Strategico", "Cooperativo"],
+  genres: ["Party Game", "Strategico", "Competitivo"],
   rating: 3,
   synopsis: "Ogni turno, i giocatori pescano una tessera dalla loro scorta e la posizionano strategicamente sul tabellone. Queste caselle rappresentano il contributo del tuo clan alla ricostruzione della terra. Rebirth premia la lungimiranza strategica e il gioco tattico intelligente, con decisioni più difficili che emergono nel corso della partita.",
   playerCount: "2-4 giocatori",
